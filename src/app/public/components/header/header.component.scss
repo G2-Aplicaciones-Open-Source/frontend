@@ -1,0 +1,99 @@
+.header {
+  background-color: #F5F0E6;;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    img {
+      width: 80px; // Ajusta según el tamaño de tu logo
+      height: auto;
+    }
+
+    span {
+      color: #333;
+    }
+  }
+
+  .search-bar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    input[type='text'],
+    input[type='date'] {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 0.4rem 0.8rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  .header-icons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    span {
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    select {
+      padding: 0.3rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+
+  }
+  .header-icons a {
+    position: relative;
+    cursor: pointer;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar {
+    width: 100%;
+    justify-content: center;
+  }
+
+
+}

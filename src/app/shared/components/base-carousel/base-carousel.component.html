@@ -1,0 +1,15 @@
+<section class="carousel">
+  <div class="carousel-container">
+    <button class="nav-button left" (click)="prev()">&#10094;</button>
+
+    <div class="carousel-item">
+      <img
+        [src]="items[currentIndex].imageUrl"
+        [alt]="items[currentIndex].title"
+      />
+      <div class="carousel-title">{{ items[currentIndex].title }}</div>
+    </div>
+
+    <button class="nav-button right" (click)="next()">&#10095;</button>
+  </div>
+</section>

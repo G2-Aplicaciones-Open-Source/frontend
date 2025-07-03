@@ -1,0 +1,31 @@
+<div class="profile-container">
+  <div class="profile-photo-section">
+    <img [src]="user.photo_url" alt="Foto de perfil" class="profile-photo" />
+    <button (click)="onChangePhoto()">Cambiar foto</button>
+    <button (click)="onSave()">Guardar</button>
+  </div>
+
+  <div class="profile-info-section">
+    <div *ngIf="showSuccessMessage" class="success-message">
+      Los datos fueron guardados exitosamente
+    </div>
+
+    <h2>Datos Personales</h2>
+    <div class="form-row">
+      <label>Nombre</label>
+      <input type="text" [(ngModel)]="user.first_name" />
+      <label>Apellidos</label>
+      <input type="text" [(ngModel)]="user.last_name" />
+    </div>
+
+    <h2>Información de contacto</h2>
+    <div class="form-row">
+      <label>Celular</label>
+      <input type="text" [(ngModel)]="user.phone_number" />
+      <label>Correo electrónico</label>
+      <input type="email" [(ngModel)]="user.email" />
+    </div>
+
+    <button class="save-button" (click)="onSave()">Guardar</button>
+  </div>
+</div>
