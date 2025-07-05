@@ -1,0 +1,32 @@
+@use '../../../../styles/variables' as *;
+.experience-header {
+  text-align: center;
+  .main-image {
+    width: 100%;
+    border-radius: 8px;
+    margin: 16px 0;
+  }
+  .rating {
+    font-size: 1.2rem;
+    color: $color-navy-blue;
+  }
+}
+
+.experience-description,
+.experience-info,
+.availability-section {
+  margin: 1.5rem 0;
+}
+
+button {
+  background-color: $color-navy-blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($color-navy-blue, 10%);
+  }
+}

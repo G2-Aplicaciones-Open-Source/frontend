@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div *ngIf="isLoading" class="loading">Cargando experiencia...</div>
+
+<section *ngIf="!isLoading && experience">
+  <header class="experience-header">
+    <h1>{{ experience.title }}</h1>
+  </header>
+
+  <section class="experience-description">
+    <p>{{ experience.description }}</p>
+  </section>
+
+  <section class="experience-info">
+    <h3>Duración</h3>
+    <p>{{ experience.duration }}</p>
+
+    <h3>Punto de encuentro</h3>
+    <p>{{ experience.meetingPoint }}</p>
+  </section>
+
+  <section class="availability-section">
+    <button (click)="toggleAvailability()">
+      {{ showAvailability ? 'Ocultar disponibilidad' : 'Revisar disponibilidad' }}
+    </button>
+
+    <div *ngIf="showAvailability">
+      <app-availability-checker [experienceId]="experienceId"></app-availability-checker>
+    </div>
+  </section>
+</section>
