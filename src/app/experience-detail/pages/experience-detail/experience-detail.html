@@ -3,7 +3,11 @@
 <section *ngIf="!isLoading && experience">
   <header class="experience-header">
     <h1>{{ experience.title }}</h1>
+    <button mat-icon-button class="favorite-btn" (click)="toggleFavorite()">
+      <mat-icon class="favorite-icon">{{ isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
   </header>
+
 
   <section class="experience-description">
     <p>{{ experience.description }}</p>
@@ -15,6 +19,11 @@
 
     <h3>Punto de encuentro</h3>
     <p>{{ experience.meetingPoint }}</p>
+  </section>
+
+  <section class="reviews-section">
+    <h2>Reseñas de los viajeros</h2>
+    <app-review-list [experienceId]="experienceId"></app-review-list>
   </section>
 
   <section class="availability-section">
