@@ -6,8 +6,10 @@ import {AvailabilityCheckerComponent} from '../../components/availability-checke
 import {CommonModule} from '@angular/common';
 import {ReviewListComponent} from '../../components/review-list/review-list.component';
 import {FavoriteService} from '../../services/favorite.service';
+import { ExperienceMediaService } from '../../services/experience-media.service'
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
+import {ExperienceMedia} from '../../model/experience-media.model';
 
 @Component({
   selector: 'app-experience-detail',
@@ -22,13 +24,15 @@ export class ExperienceDetailComponent implements OnInit {
   isLoading = true;
   showAvailability = false;
 
+  experienceMedias: ExperienceMedia[] = [];
   isFavorite = false;
   userId: number = JSON.parse(localStorage.getItem('user') || '{}').profileId || 1; // Default to 1 if not found
 
   constructor(
     private route: ActivatedRoute,
     private experienceService: ExperienceService,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private experienceMediaService: ExperienceMediaService
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +46,7 @@ export class ExperienceDetailComponent implements OnInit {
         this.isLoading = false;
       }
     });
-
+    this.loadMedia();
     this.favoriteService.getByUser(this.userId).subscribe(favs => {
       this.isFavorite = favs.some(f => f.experienceId === this.experienceId);
     });
@@ -64,4 +68,15 @@ export class ExperienceDetailComponent implements OnInit {
     }
   }
 
+
+  loadMedia(): void {
+    this.experienceMediaService.getByExperienceId(this.experienceId).subscribe({
+      next: (medias) => {
+        this.experienceMedias = medias;
+      },
+      error: () => {
+        console.warn('No se pudieron cargar las imágenes de la experiencia');
+      }
+    });
+  }
 }
