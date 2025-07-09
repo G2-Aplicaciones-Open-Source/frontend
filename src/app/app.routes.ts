@@ -6,8 +6,21 @@ export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
+    canActivate: [authGuard],
+    loadComponent: () => import('./layouts/tourist-layout/tourist-layout').then(m => m.TouristLayout),
+    children: [
+      {
+        path: 'experience-detail/:id',
+        loadComponent: () =>
+          import('../app/experience-detail/pages/experience-detail/experience-detail.component')
+            .then(m => m.ExperienceDetailComponent)
+      }
+    ]
+  },
+  {
+    path: '',
     canActivate: [preventAuthGuard],
-    loadComponent: () => import('./iam/layout/auth-layout/auth-layout').then(m => m.AuthLayout),
+    loadComponent: () => import('./layouts/auth-layout/auth-layout').then(m => m.AuthLayout),
     children: [
       {
         path: 'sign-up',
@@ -18,12 +31,5 @@ export const routes: Routes = [
         loadComponent: () => import('./iam/pages/sign-in/sign-in').then(m => m.SignIn)
       }
     ]
-  },
-  {
-    path: 'experience-detail/:id',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('../app/experience-detail/pages/experience-detail/experience-detail.component')
-        .then(m => m.ExperienceDetailComponent)
   }
 ];
