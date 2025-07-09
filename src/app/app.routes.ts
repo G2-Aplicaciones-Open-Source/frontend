@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { preventAuthGuard } from './iam/guards/prevent-auth.guard';
+import { authGuard } from './iam/guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,5 +18,12 @@ export const routes: Routes = [
         loadComponent: () => import('./iam/pages/sign-in/sign-in').then(m => m.SignIn)
       }
     ]
+  },
+  {
+    path: 'experience-detail/:id',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('../app/experience-detail/pages/experience-detail/experience-detail.component')
+        .then(m => m.ExperienceDetailComponent)
   }
 ];
