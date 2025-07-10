@@ -9,7 +9,8 @@ import {MatListModule} from "@angular/material/list"; // Importa MatListModule
 import {MatDividerModule} from "@angular/material/divider"; // Importa MatDividerModule
 import {CommonModule, NgOptimizedImage} from '@angular/common'; // Para ngSrc
 import {TranslateModule} from "@ngx-translate/core";
-import {AuthService} from "../../iam/services/auth.service"; // Si usas ngx-translate
+import {AuthService} from "../../iam/services/auth.service";
+import {FooterComponent} from '../../public/components/footer/footer.component'; // Si usas ngx-translate
 
 @Component({
   selector: 'app-tourist-layout',
@@ -28,7 +29,8 @@ import {AuthService} from "../../iam/services/auth.service"; // Si usas ngx-tran
     NgOptimizedImage,
     TranslateModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    FooterComponent
   ],
   templateUrl: './tourist-layout.html',
   styleUrl: './tourist-layout.scss'
