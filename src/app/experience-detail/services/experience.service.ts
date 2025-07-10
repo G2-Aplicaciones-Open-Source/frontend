@@ -24,14 +24,6 @@ export class ExperienceService {
    * ⚠️ Workaround temporal hasta que exista GET /experiences/{id}
    */
   getExperienceById(id: number): Observable<Experience> {
-    return this.http.get<Experience[]>(this.basePath).pipe(
-      map((experiences) => {
-        const found = experiences.find(e => e.id === id);
-        if (!found) {
-          throw new Error(`Experience with id ${id} not found`);
-        }
-        return found;
-      })
-    );
+    return this.http.get<Experience>(`${this.basePath}/${id}`);
   }
 }
