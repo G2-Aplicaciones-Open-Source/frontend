@@ -2,6 +2,9 @@ import { Routes } from '@angular/router';
 import { authGuard } from './iam/guards/auth.guard';
 import { preventAuthGuard } from './iam/guards/prevent-auth.guard';
 import {agencyAuthGuard} from './iam/guards/agency-auth.guard';
+import { AgencyLayout } from './layouts/agency-layout/agency-layout';
+import { AgencyHomeComponent } from './agencies/pages/agency-home/agency-home';
+import { EmployeesComponent } from './agencies/employees/employees.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
@@ -35,18 +38,24 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'agency',
-    canActivate: [agencyAuthGuard],
-    loadComponent: () =>
-      import('./layouts/agency-layout/agency-layout').then(m => m.AgencyLayout),
-    children: [
-      {
-        path: 'home',
-        loadComponent: () =>
-          import('./public/pages/home-agency/home-agency').then(m => m.HomeAgency)
-      }
-    ]
-  },
+        path: '',
+        component: AgencyLayout,
+        //canActivate: [agencyAuthGuard],
+        children: [
+          {
+            path: 'agencies',
+            component: AgencyHomeComponent
+          },
+          {
+            path: 'agencies/sales',
+            component: AgencyHomeComponent
+          },
+          {
+            path: 'agencies/employees',
+            component: EmployeesComponent
+          }
+        ]
+      },
   {
     path: '',
     canActivate: [preventAuthGuard],

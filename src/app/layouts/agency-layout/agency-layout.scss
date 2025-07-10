@@ -1,0 +1,76 @@
+@use '../../../styles/variables' as *;
+
+.agency-toolbar {
+  background-color: $color-sand-yellow;
+  color: $color-navy-blue;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+
+  .toolbar-left {
+    display: flex;
+    align-items: center;
+    .app-logo {
+      margin-right: 16px;
+    }
+    .menu-button {
+      color: $color-navy-blue;
+    }
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .toolbar-right {
+    display: flex;
+    align-items: center;
+    .user-name {
+      font-weight: $font-weight-h2;
+      margin-right: 8px;
+      cursor: pointer;
+      color: $color-navy-blue;
+    }
+    .mat-icon {
+      color: $color-navy-blue;
+    }
+  }
+}
+
+.mat-mdc-menu-panel {
+  background-color: $color-white !important;
+}
+
+.mat-mdc-menu-item {
+  background-color: $color-white !important;
+  color: $color-navy-blue;
+}
+
+
+.sidenav-container {
+  height: calc(100vh - 64px);
+
+  .sidenav-menu {
+    width: 250px;
+    background-color: $color-white;
+    padding-top: 16px;
+
+    .mat-nav-list {
+      a {
+        color: $color-navy-blue;
+        &:hover {
+          background-color: $color-light-beige;
+        }
+      }
+    }
+  }
+
+  .sidenav-content {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: $color-light-beige;
+  }
+}
