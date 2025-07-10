@@ -22,6 +22,7 @@ export class AuthService {
   private signedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private signedInUserId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private signedInEmail: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private signedInRoles: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   constructor(private http: HttpClient, private router: Router) {
     const token = localStorage.getItem('token');
@@ -30,8 +31,10 @@ export class AuthService {
 
       const userId = localStorage.getItem('userId');
       const email = localStorage.getItem('email');
+      const roles = localStorage.getItem('roles');
       if (userId) this.signedInUserId.next(+userId);
       if (email) this.signedInEmail.next(email);
+      if (roles) this.signedInRoles.next(JSON.parse(roles));
     }
   }
 
@@ -45,6 +48,19 @@ export class AuthService {
 
   get currentUserMail() {
     return this.signedInEmail.asObservable();
+  }
+
+  get userRoles() {
+    return this.signedInRoles.asObservable();
+  }
+
+  getRoles(): string[] {
+    const roles = localStorage.getItem('roles');
+    return roles ? JSON.parse(roles) : [];
+  }
+
+  isRole(role: string): boolean {
+    return this.getRoles().includes(role);
   }
 
   /**
@@ -62,9 +78,9 @@ export class AuthService {
           this.router.navigate(['/sign-in']).then();
         },
         error: (error) => {
-          console.error(`Error signing up: ${error}`);
-          this.router.navigate(['/sign-up']).then();
-        }
+          console.error(`Error signing up: ${error.error.message || error.message}`);
+          throw new Error(error.error.message || 'Sign-up failed');
+        },
       });
   }
 
@@ -83,15 +99,24 @@ export class AuthService {
           this.signedIn.next(true);
           this.signedInUserId.next(response.id);
           this.signedInEmail.next(response.email);
+          this.signedInRoles.next(response.roles);
+          localStorage.setItem('email', response.email);
           localStorage.setItem('token', response.token);
-          console.log(`Signed in as ${response.email} with token ${response.token}`);
-          this.router.navigate(['/']).then();
+          localStorage.setItem('roles', JSON.stringify(response.roles));
+          console.log(`Signed in as ${response.email} with token ${response.token} and roles ${response.roles}`);
+          if (response.roles.includes('ROLE_TOURIST')) {
+            this.router.navigate(['/home']).then();
+          } else if (response.roles.includes('ROLE_AGENCY_STAFF')) {
+            this.router.navigate(['/agency/home']).then();
+          } else {
+            this.router.navigate(['/']).then();
+          }
         },
         error: (error) => {
           this.signedIn.next(false);
           this.signedInUserId.next(0);
           this.signedInEmail.next('');
-          console.error(`Error while signing in: ${error}`);
+          console.error(`Error while signing in: ${error.error.message || error.message}`);
           this.router.navigate(['/sign-in']).then();
         }
       });
