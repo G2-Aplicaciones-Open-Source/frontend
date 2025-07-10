@@ -22,12 +22,13 @@ export class HomeComponent implements OnInit {
   experiences: Experience[] = [];
 
   constructor(private experienceService: HomeService) {}
-
+  carouselItemsReady = false;
   ngOnInit(): void {
     this.experienceService.getAllExperiences().subscribe({
       next: (data) => {
         console.log('Experiencias cargadas:', data);
         this.experiences = data;
+        this.carouselItemsReady = data.some(e => e.media?.length > 0);
       },
       error: (err) => console.error('Error al cargar experiencias', err)
     });
