@@ -15,6 +15,18 @@ export const routes: Routes = [
         loadComponent: () => import('./public/pages/home/home').then(m => m.Home)
       },
       {
+        path: 'favorites',
+        loadComponent: () => import('../app/profiles/pages/favorites/favorites').then(m => m.Favorites)
+      },
+      {
+        path: 'cart',
+        loadComponent: () => import('../app/profiles/pages/cart/cart').then(m => m.Cart)
+      },
+      {
+        path: 'bookings',
+        loadComponent: () => import('./bookings/pages/bookings').then(m => m.Bookings)
+      },
+      {
         path: 'experience-detail/:id',
         loadComponent: () =>
           import('../app/experience-detail/pages/experience-detail/experience-detail.component')
