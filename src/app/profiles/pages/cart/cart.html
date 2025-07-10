@@ -1,0 +1,16 @@
+<mat-card>
+  <div class="item-info">
+    <div class="title">
+      <h3>{{ title }}</h3>
+      <p>{{ date | date }}</p>
+      <p>{{ quantity }} {{ quantity === 1 ? 'adulto' : 'adultos' }}</p>
+    </div>
+    <div class="price">
+      <span>{{ price | currency:'PEN' }}</span>
+    </div>
+  </div>
+  <div class="actions">
+    <button mat-button color="primary" (click)="onEdit()">Editar</button>
+    <button mat-button color="warn" (click)="onDelete()">Eliminar</button>
+  </div>
+</mat-card>
