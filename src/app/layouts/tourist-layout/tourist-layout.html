@@ -72,7 +72,7 @@
                     <mat-icon matListItemIcon>favorite</mat-icon>
                     <span matListItemTitle>{{ 'HEADER.FAVORITES' | translate }}</span>
                 </a>
-                <a mat-list-item routerLink="/carts" (click)="close()" routerLinkActive="active-sidenav-link">
+                <a mat-list-item routerLink="/cart" (click)="close()" routerLinkActive="active-sidenav-link">
                     <mat-icon matListItemIcon>shopping_cart</mat-icon>
                     <span matListItemTitle>{{ 'HEADER.CART' | translate }}</span>
                 </a>
@@ -82,11 +82,14 @@
                 </a>
             </mat-nav-list>
         </mat-sidenav>
+
     }
     <mat-sidenav-content>
         <app-header-content (toggleSidenav)="sidenav.toggle()"></app-header-content>
         <main class="main-container">
             <router-outlet></router-outlet>
         </main>
+      <app-footer></app-footer>
     </mat-sidenav-content>
 </mat-sidenav-container>
+

@@ -1,0 +1,22 @@
+<div class="experience-card"    *ngIf="experience">
+
+  <button
+    class="favorite-button"
+    (click)="toggleFavorite()"
+    [attr.aria-label]="isFavorite ? 'Remover de favoritos' : 'Agregar a favoritos'"
+  >
+    <span [class.filled]="isFavorite">&#10084;</span>
+  </button>
+  <img
+    [src]="experience.media?.[0]?.mediaUrl || 'https://via.placeholder.com/300x200?text=No+Image'"
+    [alt]="experience.title"
+    class="experience-image"
+  />
+  <div class="experience-content">
+    <h3>{{ experience.title }}</h3>
+    <p>{{ experience.description }}</p>
+    <p><strong>Duración:</strong> {{ experience.duration }}</p>
+    <p><strong>Punto de encuentro:</strong> {{ experience.meetingPoint }}</p>
+    <button class="details-button">Ver detalles</button>
+  </div>
+</div>

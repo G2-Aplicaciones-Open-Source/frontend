@@ -1,4 +1,4 @@
-// src/app/features/experience-detail/services/experience.service.ts
+// src/app/features/experience-detail/services/home.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
@@ -24,14 +24,6 @@ export class ExperienceService {
    * ⚠️ Workaround temporal hasta que exista GET /experiences/{id}
    */
   getExperienceById(id: number): Observable<Experience> {
-    return this.http.get<Experience[]>(this.basePath).pipe(
-      map((experiences) => {
-        const found = experiences.find(e => e.id === id);
-        if (!found) {
-          throw new Error(`Experience with id ${id} not found`);
-        }
-        return found;
-      })
-    );
+    return this.http.get<Experience>(`${this.basePath}/${id}`);
   }
 }

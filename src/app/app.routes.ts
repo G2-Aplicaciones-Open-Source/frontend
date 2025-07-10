@@ -15,7 +15,19 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadComponent: () => import('./public/pages/home/home').then(m => m.Home)
+        loadComponent: () => import('./public/pages/home/home.component').then(m => m.HomeComponent)
+      },
+      {
+        path: 'favorites',
+        loadComponent: () => import('../app/profiles/pages/favorites/favorites').then(m => m.Favorites)
+      },
+      {
+        path: 'cart',
+        loadComponent: () => import('../app/profiles/pages/cart/cart').then(m => m.Cart)
+      },
+      {
+        path: 'bookings',
+        loadComponent: () => import('./bookings/pages/bookings').then(m => m.Bookings)
       },
       {
         path: 'experience-detail/:id',
