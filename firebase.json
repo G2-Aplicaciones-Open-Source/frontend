@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/frontend-travelmatch",
+    "public": "dist/frontend-travelmatch/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
