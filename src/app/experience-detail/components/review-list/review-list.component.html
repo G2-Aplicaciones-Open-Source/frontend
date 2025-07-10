@@ -1,0 +1,15 @@
+<div *ngIf="isLoading">Cargando reseñas...</div>
+
+<div *ngIf="!isLoading && reviews.length === 0">
+  <p>No hay reseñas para esta experiencia.</p>
+</div>
+
+<ul *ngIf="!isLoading && reviews.length > 0" class="review-list">
+  <li *ngFor="let review of reviews">
+    <div class="review-header">
+      <span class="rating">⭐ {{ review.rating }}/5</span>
+      <span class="date">{{ review.createdAt | date: 'shortDate' }}</span>
+    </div>
+    <p class="comment">“{{ review.comment }}”</p>
+  </li>
+</ul>

@@ -1,0 +1,50 @@
+<div *ngIf="isLoading" class="loading">Cargando experiencia...</div>
+
+<section *ngIf="!isLoading && experience">
+  <header class="experience-header">
+    <h1>{{ experience.title }}</h1>
+    <button mat-icon-button class="favorite-btn" (click)="toggleFavorite()">
+      <mat-icon class="favorite-icon">{{ isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
+  </header>
+
+
+  <section class="experience-description">
+    <p>{{ experience.description }}</p>
+  </section>
+
+  <section class="experience-info">
+    <h3>Duración</h3>
+    <p>{{ experience.duration }}</p>
+
+    <h3>Punto de encuentro</h3>
+    <p>{{ experience.meetingPoint }}</p>
+  </section>
+
+  <section class="reviews-section">
+    <h2>Reseñas de los viajeros</h2>
+    <app-review-list [experienceId]="experienceId"></app-review-list>
+  </section>
+
+  <section class="availability-section">
+    <button (click)="toggleAvailability()">
+      {{ showAvailability ? 'Ocultar disponibilidad' : 'Revisar disponibilidad' }}
+    </button>
+
+    <div *ngIf="showAvailability">
+      <app-availability-checker [experienceId]="experienceId"></app-availability-checker>
+    </div>
+  <!--</section>
+  <section class="media-gallery" *ngIf="experienceMedias.length > 0">
+    <h2>Galería de la experiencia</h2>
+    <div class="media-grid">
+      <div class="media-item" *ngFor="let media of experienceMedias">
+        <img [src]="media.mediaUrl" [alt]="media.caption" />
+        <p class="caption">{{ media.caption }}</p>
+      </div>
+    </div>
+  </section>
+  -->
+    
+
+</section>
