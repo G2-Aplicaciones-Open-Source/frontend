@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import {AvailabilityCheckerComponent} from '../../components/availability-checker/availability-checker.component';
 import {CommonModule} from '@angular/common';
 import {ReviewListComponent} from '../../components/review-list/review-list.component';
-import {FavoriteService} from '../../services/favorite.service';
+import {FavoriteService} from '../../../profiles/services/favorite.service';
 import { ExperienceMediaService } from '../../services/experience-media.service'
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
@@ -47,7 +47,7 @@ export class ExperienceDetailComponent implements OnInit {
       }
     });
     this.loadMedia();
-    this.favoriteService.getByUser(this.userId).subscribe(favs => {
+    this.favoriteService.getFavoritesByUser(this.userId).subscribe(favs => {
       this.isFavorite = favs.some(f => f.experienceId === this.experienceId);
     });
   }
@@ -58,11 +58,11 @@ export class ExperienceDetailComponent implements OnInit {
 
   toggleFavorite(): void {
     if (this.isFavorite) {
-      this.favoriteService.remove(this.userId, this.experienceId).subscribe(() => {
+      this.favoriteService.removeFavorite(this.userId, this.experienceId).subscribe(() => {
         this.isFavorite = false;
       });
     } else {
-      this.favoriteService.add({ userId: this.userId, experienceId: this.experienceId }).subscribe(() => {
+      this.favoriteService.addFavorite(this.userId, this.experienceId).subscribe(() => {
         this.isFavorite = true;
       });
     }
