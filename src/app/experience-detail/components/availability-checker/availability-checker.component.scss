@@ -1,0 +1,10 @@
+@use '../../../../styles/variables' as *;
+.availability-slot {
+  background-color: $color-light-beige;
+  border: 1px solid $color-soft-gray;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 1rem;
+  font-family: $font-family-secondary;
+  font-size: $font-size-body;
+}
