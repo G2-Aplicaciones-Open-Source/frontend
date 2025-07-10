@@ -37,8 +37,7 @@ export class CartComponent implements OnInit {
                 map(experience => ({
                   availabilityId: item.availabilityId,
                   experienceTitle: experience.title,
-                  experienceImage: experience.coverImageUrl,
-                  date: availability.date,
+                  date: availability.startDateTime,
                   quantity: item.quantity,
                   price: item.price,
                   experienceId: experience.id
@@ -63,7 +62,7 @@ export class CartComponent implements OnInit {
     const newQuantity = item.quantity + delta;
     if (newQuantity < 1) return;
 
-    this.cartService.updateItemQuantity(this.userId, {
+    this.cartService.updateItem(this.userId, {
       availabilityId: item.availabilityId,
       newQuantity
     }).subscribe(updated => {
