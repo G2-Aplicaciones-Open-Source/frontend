@@ -1,0 +1,91 @@
+.experience-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  position: relative;
+  &:hover {
+    transform: translateY(-4px);
+  }
+  .favorite-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0;
+    z-index: 10;
+
+    span {
+      color: #ccc; // gris siempre
+      transition: color 0.2s;
+
+      &.filled {
+        color: red; // rojo solo cuando está seleccionado
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .content {
+    padding: 0.5rem;
+
+    h3 {
+      margin: 0.5rem 0 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  }
+  .experience-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .experience-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .details-button {
+      margin-top: auto;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+
+      &:hover {
+        background: #0056b3;
+      }
+    }
+  }
+}

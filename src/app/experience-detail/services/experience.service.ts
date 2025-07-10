@@ -1,4 +1,4 @@
-// src/app/features/experience-detail/services/experience.service.ts
+// src/app/features/experience-detail/services/home.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';

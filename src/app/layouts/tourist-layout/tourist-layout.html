@@ -82,11 +82,14 @@
                 </a>
             </mat-nav-list>
         </mat-sidenav>
+
     }
     <mat-sidenav-content>
         <app-header-content (toggleSidenav)="sidenav.toggle()"></app-header-content>
         <main class="main-container">
             <router-outlet></router-outlet>
         </main>
+      <app-footer></app-footer>
     </mat-sidenav-content>
 </mat-sidenav-container>
+

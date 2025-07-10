@@ -1,0 +1,62 @@
+.carousel {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; // 📌 Aumenta el ancho total del carrusel
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .carousel-item {
+    position: relative;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 400px; // 📌 Aumenta la altura deseada del carrusel
+      object-fit: cover;
+      border-radius: 0.75rem;
+    }
+
+    .carousel-title {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: bold;
+    }
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    &.left {
+      left: 0.5rem;
+    }
+
+    &.right {
+      right: 0.5rem;
+    }
+  }
+}

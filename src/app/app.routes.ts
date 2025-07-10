@@ -12,7 +12,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadComponent: () => import('./public/pages/home/home').then(m => m.Home)
+        loadComponent: () => import('./public/pages/home/home.component').then(m => m.HomeComponent)
       },
       {
         path: 'experience-detail/:id',
