@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<mat-dialog-content class="employee-form">
+  <form [formGroup]="employeeForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="firstName" required />
+      <mat-error *ngIf="employeeForm.get('firstName')?.hasError('required') && employeeForm.get('firstName')?.touched">
+        El nombre es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="lastName" required />
+      <mat-error *ngIf="employeeForm.get('lastName')?.hasError('required') && employeeForm.get('lastName')?.touched">
+        El apellido es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required />
+      <mat-error *ngIf="employeeForm.get('email')?.hasError('required') && employeeForm.get('email')?.touched">
+        El email es requerido.
+      </mat-error>
+      <mat-error *ngIf="employeeForm.get('email')?.hasError('email') && employeeForm.get('email')?.touched">
+        Formato de email inválido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="phone" required />
+      <mat-error *ngIf="employeeForm.get('phone')?.hasError('required') && employeeForm.get('phone')?.touched">
+        El teléfono es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="status" required>
+        <mat-option value="Activo">Activo</mat-option>
+        <mat-option value="Inactivo">Inactivo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="employeeForm.get('status')?.hasError('required') && employeeForm.get('status')?.touched">
+        El estado es requerido.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="employeeForm.invalid">
+    {{ isEdit ? 'Guardar Cambios' : 'Agregar' }}
+  </button>
+</mat-dialog-actions>

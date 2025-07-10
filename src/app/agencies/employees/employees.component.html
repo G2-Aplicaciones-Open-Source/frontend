@@ -1,0 +1,37 @@
+<div class="employees-container">
+  <div class="header-section">
+    <h1>Gestión de Empleados</h1>
+    <button mat-raised-button color="primary" (click)="openAddEmployeeDialog()">
+      <mat-icon>add</mat-icon>
+      Agregar Empleado
+    </button>
+  </div>
+
+  <div *ngIf="employees.length === 0" class="no-employees-message">
+    <p>No hay empleados registrados aún.</p>
+  </div>
+
+  <div *ngIf="employees.length > 0" class="employees-grid">
+    <mat-card *ngFor="let employee of employees" class="employee-card">
+      <mat-card-content>
+        <h3 class="employee-name">{{ employee.firstName }} {{ employee.lastName }}</h3>
+        <p class="employee-detail"><strong>Email:</strong> {{ employee.email }}</p>
+        <p class="employee-detail"><strong>Teléfono:</strong> {{ employee.phone }}</p>
+        <p class="employee-detail">
+          <strong>Estado:</strong>
+          <span [ngClass]="{'active': employee.status === 'Activo', 'inactive': employee.status === 'Inactivo'}">
+            {{ employee.status }}
+          </span>
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button mat-icon-button color="primary" (click)="openEditEmployeeDialog(employee)" aria-label="Editar empleado">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteEmployee(employee.id)" aria-label="Eliminar empleado">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

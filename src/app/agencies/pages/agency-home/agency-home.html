@@ -1,0 +1,70 @@
+<div class="agency-home-container">
+  <div class="content-area">
+    <div class="agency-info-card card">
+      <div class="company-name">{{ agency?.name || 'My Company Name' }}</div>
+      <div class="info-item">
+        <span class="label">Ruc:</span>
+        <span class="value">{{ agency?.ruc || 'Cargando...' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Website:</span>
+        <span class="value">
+          <a class="value" [href]="agency?.description" target="_blank">{{ agency?.description }}</a>
+          <span *ngIf="!agency?.description">Cargando...</span>
+        </span>
+      </div>
+      <div class="info-item">
+        <span class="label">Email:</span>
+        <span class="value">{{ agency?.contactEmail || 'Cargando...' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Address:</span>
+        <span class="value">{{ agency?.description || 'Cargando...' }}</span> </div>
+    </div>
+
+    <div class="metrics-container">
+      <div class="metric-card card">
+        <p class="metric-text">Current sales</p>
+      </div>
+      <div class="metric-card card">
+        <p class="metric-text">Current incomes</p>
+      </div>
+    </div>
+
+    <div class="employees-table-card card">
+      <h2>Employees</h2>
+      <div *ngIf="isLoadingStaff" class="loading-message">Cargando empleados...</div>
+      <div *ngIf="!isLoadingStaff && staff.length === 0" class="no-data-message">No hay empleados registrados.</div>
+
+      <table mat-table [dataSource]="staff" class="employees-table" *ngIf="!isLoadingStaff && staff.length > 0">
+        <ng-container matColumnDef="fullName">
+          <th mat-header-cell *matHeaderCellDef> Fullname </th>
+          <td mat-cell *matCellDef="let element"> {{ getStaffFullName(element) }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef> Number </th>
+          <td mat-cell *matCellDef="let element"> {{ element.phone }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element"> {{ element.position }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element"> Go to </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
