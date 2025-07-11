@@ -108,7 +108,7 @@ export class AuthService {
           if (response.roles.includes('ROLE_TOURIST')) {
             this.router.navigate(['/home']).then();
           } else if (response.roles.includes('ROLE_AGENCY_STAFF')) {
-            this.router.navigate(['/agency/home']).then();
+            this.router.navigate(['/agencies/home']).then();
           } else {
             this.router.navigate(['/']).then();
           }
