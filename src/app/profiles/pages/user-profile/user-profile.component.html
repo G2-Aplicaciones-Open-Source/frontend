@@ -1,0 +1,37 @@
+<div class="profile-container">
+  <div class="profile-photo-section">
+    <img [src]="photoUrl" alt="Foto de perfil" class="profile-photo" />
+    <button (click)="onChangePhoto()">
+      {{ 'PROFILE.CHANGE_PHOTO' | translate }}
+    </button>
+    <button (click)="onSave()">
+      {{ 'PROFILE.SAVE' | translate }}
+    </button>
+  </div>
+
+  <div class="profile-info-section">
+    <div *ngIf="showSuccessMessage" class="success-message">
+      {{ 'PROFILE.SUCCESS_MESSAGE' | translate }}
+    </div>
+
+    <h2>{{ 'PROFILE.PERSONAL_INFO' | translate }}</h2>
+    <div class="form-row">
+      <label>{{ 'PROFILE.FIRST_NAME' | translate }}</label>
+      <input type="text" [(ngModel)]="user.firstName" />
+      <label>{{ 'PROFILE.LAST_NAME' | translate }}</label>
+      <input type="text" [(ngModel)]="user.lastName" />
+    </div>
+
+    <h2>{{ 'PROFILE.CONTACT_INFO' | translate }}</h2>
+    <div class="form-row">
+      <label>{{ 'PROFILE.PHONE' | translate }}</label>
+      <input type="text" [(ngModel)]="user.phone" />
+      <label>{{ 'PROFILE.EMAIL' | translate }}</label>
+      <input type="email" [(ngModel)]="user.email" disabled />
+    </div>
+
+    <button class="save-button" (click)="onSave()">
+      {{ 'PROFILE.SAVE' | translate }}
+    </button>
+  </div>
+</div>

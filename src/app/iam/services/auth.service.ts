@@ -100,6 +100,7 @@ export class AuthService {
           this.signedInUserId.next(response.id);
           this.signedInEmail.next(response.email);
           this.signedInRoles.next(response.roles);
+          localStorage.setItem('userId', response.id.toString());
           localStorage.setItem('email', response.email);
           localStorage.setItem('token', response.token);
           localStorage.setItem('roles', JSON.stringify(response.roles));

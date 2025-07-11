@@ -23,5 +23,57 @@
     "FIND": "Find",
     "DATE": "Date",
     "SEARCH_PLACEHOLDER": "Search places"
+  },
+  "EXPERIENCE": {
+    "DURATION": "Duration",
+    "MEETING_POINT": "Meeting point",
+    "VIEW_DETAILS": "View details"
+  },
+  "FAVORITES": {
+    "ADD": "Add to favorites",
+    "REMOVE": "Remove from favorites"
+  },
+  "FOOTER": {
+    "FOLLOW_US": "FOLLOW US",
+    "ABOUT": {
+      "TITLE": "About Us",
+      "ABOUT_US": "About",
+      "COMMITMENT": "Our Commitment"
+    },
+    "LEGAL": {
+      "TITLE": "Legal",
+      "PRIVACY": "Privacy Policy",
+      "TERMS": "Terms and Conditions"
+    },
+    "RESOURCES": {
+      "TITLE": "Resources",
+      "FAQ": "FAQ",
+      "SALES_SUPPORT": "Sales Support"
+    }
+  },
+  "HOME": {
+    "HERO_TITLE": "Find your next unforgettable experience",
+    "FEATURED_EXPERIENCES": "Featured Cultural Experiences",
+    "BEST_CULTURAL_PLACES": "Top Cultural Places"
+  },
+  "CATEGORIES": {
+    "CULTURA": "Culture",
+    "GASTRONOMIA": "Gastronomy",
+    "NATURALEZA": "Nature",
+    "DEPORTE": "Sports"
+  },
+  "PROFILE": {
+    "CHANGE_PHOTO": "Change photo",
+    "SAVE": "Save",
+    "SAVE_SUCCESS": "Your data was saved successfully",
+    "PERSONAL_DATA": "Personal Information",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "CONTACT_INFO": "Contact Information",
+    "PHONE": "Phone",
+    "EMAIL": "Email"
+  },
+  "COMMON_PROFILE": {
+    "SAVE": "Save"
   }
 }

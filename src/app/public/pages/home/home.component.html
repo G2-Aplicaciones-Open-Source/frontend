@@ -1,14 +1,14 @@
 <!-- HERO SECTION -->
 <section class="hero">
   <div class="overlay">
-    <h1>Encuentra tu siguiente experiencia inolvidable</h1>
+    <h1>{{ 'HOME.HERO_TITLE' | translate }}</h1>
     <div class="categories">
       <button
         *ngFor="let category of categories"
         [class.active]="category === activeCategory"
         (click)="setActiveCategory(category)"
       >
-        {{ category }}
+        {{ ('CATEGORIES.' + category) | translate }}
       </button>
     </div>
   </div>
@@ -16,9 +16,8 @@
 
 <!-- EXPERIENCIAS DESTACADAS -->
 <section class="experiencias">
-  <h2>Experiencias Culturales Destacadas</h2>
+  <h2>{{ 'HOME.FEATURED_EXPERIENCES' | translate }}</h2>
   <div class="cards-grid">
-    <!-- Card reutilizable -->
     <app-experience-card
       *ngFor="let experience of filteredExperiences"
       [experience]="experience"
@@ -28,6 +27,6 @@
 
 <!-- MEJORES LUGARES CULTURALES -->
 <section class="mejores-lugares">
-  <h2>Mejores Lugares Culturales</h2>
+  <h2>{{ 'HOME.BEST_CULTURAL_PLACES' | translate }}</h2>
   <app-base-carousel [experiences]="experiences"></app-base-carousel>
 </section>
