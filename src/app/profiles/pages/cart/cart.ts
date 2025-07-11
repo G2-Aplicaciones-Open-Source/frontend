@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartService } from '../../services/cart.service';
 import { ExperienceService } from '../../../experience-detail/services/experience.service';
-import { AvailabilityService } from '../../../experience-detail/services/availability.services';
+
 import { Observable, forkJoin } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { MatCardModule} from "@angular/material/card";
 import {CommonModule} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
+import {AvailabilityService} from "../../../experience-detail/services/availability.service";
 
 @Component({
     selector: 'app-cart',

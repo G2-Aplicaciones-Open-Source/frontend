@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CommonModule, formatDate} from '@angular/common';
 import { Availability } from '../../model/availability.model';
-import { AvailabilityService} from '../../services/availability.services';
+import {AvailabilityService} from '../../services/availability.service';
 
 @Component({
   selector: 'app-availability-checker',

@@ -15,6 +15,7 @@ import { DestinationService } from '../../services/destination.service';
 
 //import { AvailabilityCheckerComponent } from '../../components/availability-checker/availability-checker.component';
 import { ReviewListComponent } from '../../components/review-list/review-list.component';
+import {AddReviewFormComponent} from '../../components/add-review-form/add-review-form.component';
 
 @Component({
   selector: 'app-experience-detail',
@@ -27,7 +28,8 @@ import { ReviewListComponent } from '../../components/review-list/review-list.co
     MatIcon,
     MatButtonModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    AddReviewFormComponent
   ],
   templateUrl: './experience-detail.html',
   styleUrls: ['./experience-detail.scss']
@@ -135,7 +137,27 @@ export class ExperienceDetailComponent implements OnInit {
     });
   }
 
+  submitReview = ({ comment, rating }: { comment: string, rating: number }) => {
+    const body = {
+      userId: this.userId,
+      experienceId: this.experienceId,
+      rating,
+      comment
+    };
+
+    this.reviewService.createReview(body).subscribe({
+      next: () => {
+        this.loadExtras(); // recarga el rating y lista de reviews
+      },
+      error: err => {
+        console.error('Error al crear reseña', err);
+      }
+    });
+  };
+
+
   goToExperience(id: number): void {
     this.router.navigate(['/experience-detail/', id]);
   }
+
 }

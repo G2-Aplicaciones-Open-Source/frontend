@@ -33,6 +33,15 @@
     <app-review-list [experienceId]="experienceId"></app-review-list>
   </section>
 
+  <section class="add-review-section">
+    <app-add-review-form
+      [experienceId]="experienceId"
+      [userId]="userId"
+      [submitReview]="submitReview">
+    </app-add-review-form>
+  </section>
+
+
   <section *ngIf="carouselImages.length" class="image-carousel">
     <div class="carousel-wrapper">
       <mat-card *ngFor="let img of carouselImages" class="carousel-card">

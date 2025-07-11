@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-favorites',
@@ -25,22 +25,27 @@ export class Favorites implements OnInit {
   userId: number = 0;
 
   ngOnInit() {
-    const userData = localStorage.getItem('user');
-    if (userData) {
-      const user = JSON.parse(userData);
-      this.userId = user.id || user.userId || 0;
+    const storedUserId = localStorage.getItem('userId');
+    this.userId = storedUserId ? Number(storedUserId) : 0;
+
+    if (!this.userId) {
+      console.error('Usuario no autenticado');
+      return;
     }
 
     this.loadFavorites();
   }
 
+
   loadFavorites() {
     this.favorites = [];
+
     this.favoriteService.getFavoritesByUser(this.userId).subscribe(favs => {
-      favs.forEach(fav => {
-        this.experienceService.getExperienceById(fav.experienceId).subscribe(exp => {
-          this.favorites.push(exp);
-        });
+      const experienceCalls = favs.map(fav =>
+        this.experienceService.getExperienceById(fav.experienceId)
+      );
+      forkJoin(experienceCalls).subscribe(experiences => {
+        this.favorites = experiences;
       });
     });
   }

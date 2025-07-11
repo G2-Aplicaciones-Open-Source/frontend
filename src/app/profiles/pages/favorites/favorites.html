@@ -8,8 +8,11 @@
   <mat-grid-list cols="3" gutterSize="16px" rowHeight="350px">
     <mat-grid-tile *ngFor="let experience of favorites">
       <mat-card class="favorite-card">
-        <img mat-card-image [src]="" alt="{{ experience.title }}" />
-        <mat-card-title>{{ experience.title }}</mat-card-title>
+          <img mat-card-image
+               src= ""
+               alt="{{ experience.title }}" />
+
+          <mat-card-title>{{ experience.title }}</mat-card-title>
         <mat-card-content>
           <p>{{ experience.description }}</p>
         </mat-card-content>
