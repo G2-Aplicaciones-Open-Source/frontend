@@ -5,6 +5,7 @@ import { ExperienceCardComponent } from '../../components/experience-card/experi
 import { NgForOf ,NgIf} from '@angular/common';
 import { BaseCarouselComponent } from '../../../shared/components/base-carousel/base-carousel.component';
 import {HomeService} from "../../../experiences/services/home.service";
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ import {HomeService} from "../../../experiences/services/home.service";
   imports: [
     ExperienceCardComponent,
     NgForOf,
-    BaseCarouselComponent
+    BaseCarouselComponent,
+    TranslatePipe
   ]
 })
 export class HomeComponent implements OnInit {

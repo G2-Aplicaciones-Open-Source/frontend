@@ -34,6 +34,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('../app/experience-detail/pages/experience-detail/experience-detail.component')
             .then(m => m.ExperienceDetailComponent)
+      },
+      {
+        path: 'profile',
+        loadComponent: () => import('../app/profiles/pages/user-profile/user-profile.component')
+          .then(m => m.UserProfileComponent)
       }
     ]
   },

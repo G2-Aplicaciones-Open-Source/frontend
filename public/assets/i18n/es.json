@@ -23,5 +23,58 @@
     "FIND": "Encontrar",
     "DATE": "Fecha",
     "SEARCH_PLACEHOLDER": "Busca lugares"
+  },
+
+  "EXPERIENCE": {
+    "DURATION": "Duración",
+    "MEETING_POINT": "Punto de encuentro",
+    "VIEW_DETAILS": "Ver detalles"
+  },
+  "FAVORITES": {
+    "ADD": "Agregar a favoritos",
+    "REMOVE": "Remover de favoritos"
+  },
+  "FOOTER": {
+    "FOLLOW_US": "SÍGUENOS",
+    "ABOUT": {
+      "TITLE": "Nosotros",
+      "ABOUT_US": "Acerca de",
+      "COMMITMENT": "Nuestro compromiso"
+    },
+    "LEGAL": {
+      "TITLE": "Legales",
+      "PRIVACY": "Política de privacidad",
+      "TERMS": "Términos y condiciones"
+    },
+    "RESOURCES": {
+      "TITLE": "Recursos",
+      "FAQ": "Preguntas frecuentes",
+      "SALES_SUPPORT": "Asistencia de ventas"
+    }
+  },
+  "HOME": {
+    "HERO_TITLE": "Encuentra tu siguiente experiencia inolvidable",
+    "FEATURED_EXPERIENCES": "Experiencias Culturales Destacadas",
+    "BEST_CULTURAL_PLACES": "Mejores Lugares Culturales"
+  },
+  "CATEGORIES": {
+    "CULTURA": "Cultura",
+    "GASTRONOMIA": "Gastronomía",
+    "NATURALEZA": "Naturaleza",
+    "DEPORTE": "Deporte"
+  },
+  "PROFILE": {
+    "CHANGE_PHOTO": "Cambiar foto",
+    "SAVE": "Guardar",
+    "SAVE_SUCCESS": "Los datos fueron guardados exitosamente",
+    "PERSONAL_DATA": "Datos Personales",
+    "FIRST_NAME": "Nombre",
+    "LAST_NAME": "Apellidos",
+    "CONTACT_INFO": "Información de contacto",
+    "PHONE": "Celular",
+    "EMAIL": "Correo electrónico"
+  },
+  "COMMON_PROFILE": {
+    "SAVE": "Guardar"
   }
 }
