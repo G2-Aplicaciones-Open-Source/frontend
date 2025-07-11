@@ -5,16 +5,26 @@ import { ExperienceService } from '../../../experience-detail/services/experienc
 import { AvailabilityService } from '../../../experience-detail/services/availability.services';
 import { Observable, forkJoin } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
+import { MatCardModule} from "@angular/material/card";
+import {CommonModule} from "@angular/common";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+    selector: 'app-cart',
+    standalone: true,
+    templateUrl: './cart.html',
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+    ],
+    styleUrls: ['./cart.scss']
 })
 export class CartComponent implements OnInit {
   userId = Number(localStorage.getItem('userId'));
   cartItems: any[] = [];
   totalPrice = 0;
+  date = new Date();
 
   constructor(
     private cartService: CartService,
@@ -37,8 +47,6 @@ export class CartComponent implements OnInit {
                 map(experience => ({
                   availabilityId: item.availabilityId,
                   experienceTitle: experience.title,
-                  experienceImage: experience.coverImageUrl,
-                  date: availability.date,
                   quantity: item.quantity,
                   price: item.price,
                   experienceId: experience.id
@@ -63,7 +71,7 @@ export class CartComponent implements OnInit {
     const newQuantity = item.quantity + delta;
     if (newQuantity < 1) return;
 
-    this.cartService.updateItemQuantity(this.userId, {
+    this.cartService.updateItem(this.userId, {
       availabilityId: item.availabilityId,
       newQuantity
     }).subscribe(updated => {

@@ -1,16 +1,28 @@
-<mat-card>
-  <div class="item-info">
-    <div class="title">
-      <h3>{{ title }}</h3>
-      <p>{{ date | date }}</p>
-      <p>{{ quantity }} {{ quantity === 1 ? 'adulto' : 'adultos' }}</p>
+<div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
+  <mat-card *ngFor="let item of cartItems" class="cart-item">
+    <div class="item-info">
+      <div class="title">
+        <h3>{{ item.experienceTitle }}</h3>
+        <p>{{ date | date }}</p>
+        <p>{{ item.quantity }} {{ item.quantity === 1 ? 'adulto' : 'adultos' }}</p>
+      </div>
+      <div class="price">
+        <span>{{ item.price | currency:'PEN' }}</span>
+      </div>
     </div>
-    <div class="price">
-      <span>{{ price | currency:'PEN' }}</span>
+    <div class="actions">
+      <button mat-button color="primary" (click)="updateQuantity(item, 1)">+</button>
+      <button mat-button color="primary" (click)="updateQuantity(item, -1)">-</button>
+      <button mat-button color="warn" (click)="removeItem(item)">Eliminar</button>
     </div>
+  </mat-card>
+
+  <div class="total-price">
+    <h3>Total: {{ totalPrice | currency:'PEN' }}</h3>
+    <button mat-raised-button color="warn" (click)="clearCart()">Vaciar carrito</button>
   </div>
-  <div class="actions">
-    <button mat-button color="primary" (click)="onEdit()">Editar</button>
-    <button mat-button color="warn" (click)="onDelete()">Eliminar</button>
-  </div>
-</mat-card>
+</div>
+
+<ng-template #emptyCart>
+  <p>Tu carrito está vacío.</p>
+</ng-template>
