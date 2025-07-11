@@ -1,0 +1,23 @@
+<div class="stripe-container">
+  <div id="card-element" class="card-box"></div>
+
+  <!-- Mostrar mensaje de error si existe -->
+  <div class="message" *ngIf="errorMessage()">
+    <p style="color: red;">{{ errorMessage() }}</p>
+  </div>
+
+  <!-- Mostrar mensaje de procesamiento -->
+  <div class="message" *ngIf="processing()">
+    <p>Procesando pago, no cierres esta ventana...</p>
+  </div>
+
+  <!-- Mostrar mensaje de éxito -->
+  <div class="message" *ngIf="success()">
+    <p style="color: green;">Pago realizado con éxito. Confirmando con el servidor...</p>
+  </div>
+
+  <!-- Botón de confirmación de pago -->
+  <button [disabled]="processing() || success()" (click)="handlePayment()">
+    Confirmar pago
+  </button>
+</div>
