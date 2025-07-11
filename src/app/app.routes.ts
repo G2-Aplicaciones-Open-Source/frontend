@@ -43,20 +43,20 @@ export const routes: Routes = [
     ]
   },
   {
-        path: '',
+        path: 'agencies',
         component: AgencyLayout,
-        //canActivate: [agencyAuthGuard],
+        canActivate: [agencyAuthGuard],
         children: [
           {
-            path: 'agencies',
+            path: 'home',
             component: AgencyHomeComponent
           },
           {
-            path: 'agencies/sales',
+            path: 'sales',
             component: AgencyHomeComponent
           },
           {
-            path: 'agencies/employees',
+            path: 'employees',
             component: EmployeesComponent
           }
         ]
