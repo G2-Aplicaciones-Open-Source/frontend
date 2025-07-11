@@ -23,7 +23,7 @@ export const routes: Routes = [
       },
       {
         path: 'cart',
-        loadComponent: () => import('../app/profiles/pages/cart/cart').then(m => m.Cart)
+        loadComponent: () => import('../app/profiles/pages/cart/cart').then(m => m.CartComponent)
       },
       {
         path: 'bookings',
