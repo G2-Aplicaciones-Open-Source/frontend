@@ -1,5 +1,13 @@
 @use '../../../../styles/variables' as *;
 
+.experience-rating {
+  font-family: $font-family-primary;
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-navy-blue;
+  margin: 0.5rem 0;
+}
+
 .experience-header {
   text-align: left;
   margin-bottom: 1rem;

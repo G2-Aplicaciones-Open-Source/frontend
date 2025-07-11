@@ -43,24 +43,24 @@ export const routes: Routes = [
     ]
   },
   {
-        path: 'agencies',
-        component: AgencyLayout,
-        canActivate: [agencyAuthGuard],
-        children: [
-          {
-            path: 'home',
-            component: AgencyHomeComponent
-          },
-          {
-            path: 'sales',
-            component: AgencyHomeComponent
-          },
-          {
-            path: 'employees',
-            component: EmployeesComponent
-          }
-        ]
+    path: 'agencies',
+    component: AgencyLayout,
+    canActivate: [agencyAuthGuard],
+    children: [
+      {
+        path: 'home',
+        component: AgencyHomeComponent
       },
+      {
+        path: 'sales',
+        component: AgencyHomeComponent
+      },
+      {
+        path: 'employees',
+        component: EmployeesComponent
+      }
+    ]
+  },
   {
     path: '',
     canActivate: [preventAuthGuard],
@@ -80,7 +80,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: '**',
+    path: '',
     loadComponent: ()=>
       import('./public/pages/page-not-found/page-not-found').then(m => m.PageNotFound),
   }

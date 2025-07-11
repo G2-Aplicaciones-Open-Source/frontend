@@ -1,4 +1,3 @@
-// src/app/features/experience-detail/pages/experience-detail/experience-detail.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -10,11 +9,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ExperienceService, Experience } from '../../services/experience.service';
 import { FavoriteService } from '../../../profiles/services/favorite.service';
 import { ExperienceMediaService, ExperienceMedia } from '../../services/experience-media.service';
-import { ReviewService, Review } from '../../services/review.service';
+import { ReviewService } from '../../services/review.service';
 import { AgencyService } from '../../services/agency.service';
 import { DestinationService } from '../../services/destination.service';
 
-import { AvailabilityCheckerComponent } from '../../components/availability-checker/availability-checker.component';
+//import { AvailabilityCheckerComponent } from '../../components/availability-checker/availability-checker.component';
 import { ReviewListComponent } from '../../components/review-list/review-list.component';
 
 @Component({
@@ -22,7 +21,7 @@ import { ReviewListComponent } from '../../components/review-list/review-list.co
   standalone: true,
   imports: [
     CommonModule,
-    AvailabilityCheckerComponent,
+    //AvailabilityCheckerComponent,
     ReviewListComponent,
     MatIconModule,
     MatIcon,
@@ -117,12 +116,12 @@ export class ExperienceDetailComponent implements OnInit {
   }
 
   private loadSuggestions(): void {
-    const ids = [1, 2, 3].filter(id => id !== this.experienceId);
-    ids.forEach(id => {
-      this.experienceService.getExperienceById(id).subscribe(exp => {
-        this.reviewService.getByExperienceId(id).subscribe(reviews => {
+    this.experienceService.getAllExperiences?.().subscribe?.(experiences => {
+      const filtered = experiences.filter(e => e.id !== this.experienceId).slice(0, 3);
+      filtered.forEach(exp => {
+        this.reviewService.getByExperienceId(exp.id).subscribe(reviews => {
           const avg = reviews.length ? reviews.reduce((a, b) => a + b.rating, 0) / reviews.length : 0;
-          this.experienceMediaService.getMediaByExperienceId(id).subscribe(medias => {
+          this.experienceMediaService.getMediaByExperienceId(exp.id).subscribe(medias => {
             const fondo = medias.find(m => m.caption.toLowerCase().includes('fondo'));
             this.suggestions.push({
               id: exp.id,
@@ -137,6 +136,6 @@ export class ExperienceDetailComponent implements OnInit {
   }
 
   goToExperience(id: number): void {
-    this.router.navigate(['/experiences', id]);
+    this.router.navigate(['/experience-detail/', id]);
   }
 }

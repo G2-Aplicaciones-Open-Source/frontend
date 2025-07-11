@@ -1,3 +1,4 @@
+<!-- src/app/features/experience-detail/pages/experience-detail/experience-detail.component.html -->
 <ng-container *ngIf="!isLoading && experience">
   <section class="experience-header">
     <h1 class="experience-title">
@@ -8,6 +9,7 @@
         </mat-icon>
       </button>
     </h1>
+    <p class="experience-rating">⭐ {{ rating.toFixed(1) }}/5</p>
     <img *ngIf="backgroundImageUrl" [src]="backgroundImageUrl" class="background-image" />
   </section>
 
@@ -23,9 +25,9 @@
     <p><strong>Destino:</strong> {{ destinationFull }}</p>
   </section>
 
-  <section class="experience-availability">
-    <app-availability-checker [experienceId]="experienceId"></app-availability-checker>
-  </section>
+<!--  <section class="experience-availability">-->
+<!--    <app-availability-checker [experienceId]="experienceId"></app-availability-checker>-->
+<!--  </section>-->
 
   <section class="experience-reviews">
     <app-review-list [experienceId]="experienceId"></app-review-list>
@@ -55,6 +57,7 @@
     </div>
   </section>
 </ng-container>
+
 
 <!--  <section class="availability-section">-->
 <!--    <button (click)="toggleAvailability()">-->

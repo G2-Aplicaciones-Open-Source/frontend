@@ -26,4 +26,9 @@ export class ExperienceService {
   getExperienceById(id: number): Observable<Experience> {
     return this.http.get<Experience>(`${this.basePath}/${id}`);
   }
+
+  getAllExperiences(): Observable<Experience[]> {
+    return this.http.get<Experience[]>(`${this.basePath}`);
+  }
+
 }
