@@ -17,13 +17,9 @@ export class ExperienceMediaService {
 
   constructor(private http: HttpClient) {}
 
-  getByExperienceId(experienceId: number): Observable<ExperienceMedia[]> {
+  getMediaByExperienceId(experienceId: number): Observable<ExperienceMedia[]> {
     const headers = new HttpHeaders().set('experienceid', experienceId.toString());
     return this.http.get<ExperienceMedia[]>(`${this.baseUrl}`, { headers });
   }
 
-  addMedia(experienceId: number, body: { mediaUrl: string; caption: string }): Observable<ExperienceMedia> {
-    const headers = new HttpHeaders().set('experienceid', experienceId.toString());
-    return this.http.post<ExperienceMedia>(`${this.baseUrl}`, body, { headers });
-  }
 }
