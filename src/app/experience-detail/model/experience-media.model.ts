@@ -1,4 +1,3 @@
-
 export interface ExperienceMedia {
   id: number;
   experienceId: number;
