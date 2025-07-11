@@ -19,8 +19,8 @@ export class StaffService {
     return this.http.get<Staff>(`${this.baseUrl}/staff/${id}`);
   }
 
-  addStaff(agencyId: number, staff: Partial<Staff>): Observable<Staff> {
-    return this.http.post<Staff>(`${this.baseUrl}/agencies/${agencyId}/staff`, staff);
+  addStaff(staff: Omit<Staff, 'id'>): Observable<Staff> {
+    return this.http.post<Staff>(`${this.baseUrl}/staff`, staff);
   }
 
   updateStaff(id: number, staff: Staff): Observable<Staff> {
