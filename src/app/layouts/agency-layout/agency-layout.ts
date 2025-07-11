@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
+import {AuthService} from '../../iam/services/auth.service';
 
 @Component({
   selector: 'app-agency-layout',
@@ -33,22 +34,14 @@ export class AgencyLayout implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
   logout(): void {
-    console.log('User logged out from Agency Layout');
-    this.router.navigate(['/sign-in']).then(success => {
-      if (success) {
-        console.log('Navigation to sign-in successful');
-      } else {
-        console.warn('Navigation to sign-in failed or was cancelled');
-      }
-    }).catch(error => {
-      console.error('Error during navigation to sign-in:', error);
-    });
+    this.authService.signOut();
   }
 
   ngOnDestroy(): void {
